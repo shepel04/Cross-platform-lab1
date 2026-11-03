@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'pages/posts_page.dart';
+import 'pages/users_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -18,6 +21,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const MyHomePage(title: 'Home Page'),
         '/second': (context) => const SecondPage(),
+        '/users': (context) => const UsersPage(),
+        '/posts': (context) => const PostsPage(),
       },
     );
   }
@@ -33,11 +38,30 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/second');
-          },
-          child: const Text('Next'),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/second');
+              },
+              child: const Text('Next'),
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/users');
+              },
+              child: const Text('Users'),
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/posts');
+              },
+              child: const Text('Posts'),
+            ),
+          ],
         ),
       ),
     );
